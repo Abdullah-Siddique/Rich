@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Checkup Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        div {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+        p {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+        p strong {
+            color: #5cb85c;
+        }
+        .visit-again {
+            font-size: 24px;
+            color: #666;
+            margin-top: 20px;
+            animation: typing 3s steps(12) forwards, blink-caret 0.75s step-end infinite;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 3px solid #666;
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 12ch; } /* "Visit Again" has 11 characters plus a space */
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: #666; }
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Your Health Report</h1>
+        <p><strong>BMI:</strong> {{ bmi }}</p>
+        <p><strong>BMR:</strong> {{ bmr }}</p>
+        <p><strong>Health Status:</strong> {{ health_status }}</p>
+    </div>
+    <div class="visit-again">Visit Again</div>
+</body>
+</html>

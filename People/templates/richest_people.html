@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World's 10 Richest People</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            padding: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        h2 {
+            color: #444;
+        }
+        .person {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+        }
+        footer {
+            text-align: center;
+            color: #666;
+            background-color: #f1f1f1;
+            padding: 10px 0;
+            margin-top: auto;
+            width: 100%;
+        }
+        footer a {
+            color: #5cb85c;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;    
+        }
+    </style>
+</head>
+<body>
+    <h1>World's 10 Richest People</h1>
+<h2>(This list is not decorated in order)</h2>
+    {% for person in people %}
+        <div class="person">
+            <h2>{{ person.name }}</h2>
+            <p><strong>Net Worth:</strong> {{ person.net_worth }}</p>
+            <p><strong>Business:</strong> {{ person.business }}</p>
+            <p><strong>Contributions:</strong> {{ person.contributions }}</p>
+            <p>{{ person.intro }}</p>
+        </div>
+    {% endfor %}
+    <footer>
+        <h4>Authority: Abdullah Siddique</h4>
+        <h4>Contact: siddiqueabdullah581@gmail.com
+        <br>
+        Github: <a href="https://github.com/Abdullah-Siddique">Abdullah Siddique</a>
+        </h4>
+        <p>© 2024 Richest People. All rights reserved.</p>
+    </footer>
+</body>
+</html>
