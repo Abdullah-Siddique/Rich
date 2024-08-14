@@ -1,0 +1,2 @@
+# Rich
+A Django Project
