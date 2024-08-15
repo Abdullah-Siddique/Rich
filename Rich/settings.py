@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-o)a5$jqb6z95a5td2m)$arrwqf4^yz_x)5z*luipjklnx(%%(%
 DEBUG = True
 
 
-ALLOWED_HOSTS = ['my-domain.com', 'my-app.onrender.com']
+ALLOWED_HOSTS = []
 
 
 
@@ -121,7 +121,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
