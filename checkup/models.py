@@ -3,11 +3,11 @@ from django.db import models
 
 class UserProfile(models.Model):
     ACTIVITY_LEVEL_CHOICES = [
-        ('little', 'Little/no exercise'),
-        ('light', 'Light exercise'),
-        ('moderate', 'Moderate exercise (3-5 days/wk)'),
-        ('active', 'Very active (6-7 days/wk)'),
-        ('extra', 'Extra active (very active & physical job)'),
+        ('little', 'Minimal or no exercise'),
+        ('light', 'Occasional exercise(Light exercise in 2-3 days/week)'),
+        ('moderate', 'Moderate exercise (Hard exercise 3-5 days/week)'),
+        ('active', 'Very active (Very hard exercise 6-7 days/week)'),
+        ('extra', 'Extra active (Very active & physical job in everyday)'),
     ]
 
     height = models.FloatField(help_text="Height in centimeters")

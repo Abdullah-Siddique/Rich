@@ -43,10 +43,25 @@
             overflow: hidden;
             border-right: 3px solid #666;
         }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 20px;
+            font-size: 18px;
+            color: #fff;
+            background-color: #5cb85c;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .button:hover {
+            background-color: #4cae4c;
+        }
 
         @keyframes typing {
             from { width: 0; }
-            to { width: 12ch; } /* "Visit Again" has 11 characters plus a space */
+            to { width: 12ch; } 
         }
 
         @keyframes blink-caret {
@@ -62,9 +77,11 @@
         <p><strong>BMR:</strong> {{ bmr }}</p>
         <p><strong>Calorie Demand:</strong> {{ calorie_demand }}</p>
         <p><strong>Health Status:</strong> {{ health_status }}</p>
+        <a href="{% url 'checkup' %}" class="button">Go Back (Test Again)</a>
     </div>
     <div class="visit-again">Visit Again</div>
 </body>
 </html>
+
 
 
