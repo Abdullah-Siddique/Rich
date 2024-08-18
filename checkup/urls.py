@@ -1,8 +1,10 @@
+# checkup/urls.py
 from django.urls import path
-from .views import checkup_view
+from .views import checkup
 
 urlpatterns = [
-    path('checkup/', checkup_view, name='checkup'),
+    path('checkup/', checkup, name='checkup'),
 ]
+
 
 

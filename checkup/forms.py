@@ -1,10 +1,11 @@
+# checkup/forms.py
 from django import forms
 from .models import UserProfile
 
 class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
-        fields = ['height', 'weight', 'age', 'gender']
+        fields = ['height', 'weight', 'age', 'gender', 'activity_level']
 
     def clean_height(self):
         height = self.cleaned_data.get('height')
@@ -23,3 +24,4 @@ class UserProfileForm(forms.ModelForm):
         if age <= 0:
             raise forms.ValidationError("Age must be greater than 0.")
         return age
+
