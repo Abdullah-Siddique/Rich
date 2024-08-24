@@ -8,14 +8,15 @@
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f9;
+            background-image: url('https://cdn.leonardo.ai/users/12adf5be-8e70-4be7-82b2-f6a279f24f70/generations/1a4da6ba-e71f-44a6-aabe-578274ab96f6/Default_white_background_2.jpg');
             margin: 0;
             padding: 0;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
         }
-        h1, p {
-            color: #333;
+        h1, h2 {
+            color: #0326ec;
             text-align: center;
         }
         footer {
@@ -59,23 +60,27 @@
         button:hover {
             background-color: #4cae4c;
         }
-        select {
-            width: 60%; 
+        select, input {
+            width: calc(100% - 14px); 
             padding: 7px;
             font-size: 0.9em; 
             border-radius: 6px;
-            border: 1px solid #ccc;
+            border: 1px solid #141313;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            margin-bottom: 17px;    
+            margin-bottom: 17px;
         }
-
         select option {
             font-size: 0.9em; 
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
         }
         #tips {
             text-align: center;
             font-size: 2.5em;  
-            color: #444;
+            color: #9205b6;
             margin: 60px 0 20px 0;  
             height: 60px; 
         }
@@ -88,7 +93,7 @@
                 font-size: 16px;
             }
             #tips {
-                font-size: 1.8em;  /* Responsive adjustment for smaller screens */
+                font-size: 1.8em;
             }
         }
     </style>
@@ -96,28 +101,39 @@
 <body>
     <div>
         <h1>Health Checkup</h1>
-        <p>Please enter your personal information to calculate your BMI, BMR, and Calorie Demand.</p>
+        <h2>Please enter your personal information to calculate your BMI, BMR, and Calorie Demand.</h2>
         <form method="post">
             {% csrf_token %}
-            {{ form.as_p }}
+            <label for="{{ form.height.id_for_label }}">Height (cm):</label>
+            {{ form.height }}
+
+            <label for="{{ form.weight.id_for_label }}">Weight (kg):</label>
+            {{ form.weight }}
+
+            <label for="{{ form.age.id_for_label }}">Age:</label>
+            {{ form.age }}
+
+            <label for="{{ form.gender.id_for_label }}">Gender:</label>
+            {{ form.gender }}
+
+            <label for="{{ form.activity_level.id_for_label }}">Activity Level:</label>
+            {{ form.activity_level }}
+
             <button type="submit">Calculate</button>
         </form>
         <div id="tips">
-            <!-- Tip will be displayed here -->
             <p id="current-tip"></p>
         </div>
     </div>
     <footer>
         <h4>Authority: Abdullah Siddique</h4>
-        <h4>Contact: siddiqueabdullah581@gmail.com
-        <br>
-        Github: <a href="https://github.com/Abdullah-Siddique">Abdullah Siddique</a>
-        </h4>
+        <h4>Contact: siddiqueabdullah581@gmail.com<br>
+        Github: <a href="https://github.com/Abdullah-Siddique">Abdullah Siddique</a></h4>
         <p>© 2024 Health Checkup. All rights reserved.</p>
     </footer>
     <script>
         const tips = [
-    "Drink plenty of water.",
+            "Drink plenty of water.",
     "Get at least 8 hours of sleep.",
     "Eat more fruits and vegetables.",
     "Exercise regularly.",
@@ -135,109 +151,7 @@
     "Spend time outdoors.",
     "Laugh often and enjoy life.",
     "Avoid overeating.",
-    "Stay connected with loved ones.",
-    "Keep your environment clean.",
-    "Stay hydrated by drinking water regularly.",
-    "Eat a variety of fruits and vegetables daily.",
-    "Avoid excessive salt in your diet.",
-    "Limit your intake of saturated fats.",
-    "Choose whole grains over refined grains.",
-    "Incorporate lean proteins into your meals.",
-    "Practice portion control to avoid overeating.",
-    "Avoid eating late at night.",
-    "Make time for regular physical activity.",
-    "Include strength training in your workout routine.",
-    "Try to get at least 30 minutes of exercise each day.",
-    "Use stairs instead of elevators when possible.",
-    "Practice mindfulness or meditation to reduce stress.",
-    "Get regular health check-ups.",
-    "Maintain a balanced and varied diet.",
-    "Avoid smoking and limit alcohol consumption.",
-    "Prioritize mental health and seek support if needed.",
-    "Keep your living environment clean and organized.",
-    "Practice good hygiene, including regular hand washing.",
-    "Limit your intake of sugary foods and beverages.",
-    "Incorporate healthy fats, such as avocados and nuts, into your diet.",
-    "Stay active by engaging in hobbies and activities you enjoy.",
-    "Ensure you get enough fiber in your diet to support digestion.",
-    "Avoid prolonged periods of sitting; take breaks to move around.",
-    "Get enough sleep each night to support overall health.",
-    "Manage your stress through relaxation techniques like yoga.",
-    "Eat breakfast to kickstart your metabolism each day.",
-    "Plan meals ahead of time to ensure a healthy diet.",
-    "Use herbs and spices to add flavor to your meals without extra calories.",
-    "Avoid excessive caffeine intake.",
-    "Choose low-fat or non-fat dairy products.",
-    "Practice mindful eating by paying attention to your hunger cues.",
-    "Include a variety of colors in your diet for a range of nutrients.",
-    "Limit your consumption of processed foods.",
-    "Eat more plant-based meals for added health benefits.",
-    "Drink herbal teas for relaxation and hydration.",
-    "Keep a food journal to track your eating habits.",
-    "Practice positive affirmations to boost mental well-being.",
-    "Avoid skipping meals to maintain stable energy levels.",
-    "Engage in activities that challenge your brain, like puzzles or reading.",
-    "Incorporate relaxation exercises into your routine.",
-    "Use a standing desk if you work at a computer for long periods.",
-    "Include probiotics in your diet to support gut health.",
-    "Avoid excessive screen time before bed.",
-    "Opt for healthy snacks like fruits, nuts, or yogurt.",
-    "Practice gratitude to improve your mood and outlook.",
-    "Spend time in nature to boost mental and physical health.",
-    "Take time for hobbies and activities you enjoy.",
-    "Avoid multitasking during meals to focus on your food.",
-    "Keep track of your health goals and progress.",
-    "Use a water filter to ensure clean drinking water.",
-    "Avoid excessive use of artificial sweeteners.",
-    "Choose lean cuts of meat and remove visible fat.",
-    "Try to reduce your intake of trans fats.",
-    "Incorporate flexibility exercises like stretching or yoga.",
-    "Use healthy cooking methods like baking or grilling.",
-    "Avoid eating out frequently to control ingredients and portion sizes.",
-    "Seek support from friends or family to stay motivated.",
-    "Learn to manage your time effectively to reduce stress.",
-    "Limit your intake of high-calorie condiments and sauces.",
-    "Practice deep breathing exercises to relax and reduce anxiety.",
-    "Choose whole fruits over fruit juices for more fiber.",
-    "Include nuts and seeds in your diet for healthy fats and protein.",
-    "Avoid eating mindlessly while watching TV or working.",
-    "Set realistic health and fitness goals.",
-    "Include a source of lean protein in every meal.",
-    "Practice mindful spending to reduce financial stress.",
-    "Seek professional advice for any health concerns.",
-    "Avoid eating in response to emotional stress.",
-    "Take regular breaks to stretch and move if you work at a desk.",
-    "Opt for healthier cooking oils like olive oil.",
-    "Find a workout buddy to stay motivated and accountable.",
-    "Prioritize self-care and take time for yourself.",
-    "Use smaller plates to help control portion sizes.",
-    "Avoid eating large meals before bedtime.",
-    "Stay informed about healthy eating and lifestyle practices.",
-    "Experiment with new, healthy recipes to keep meals interesting.",
-    "Practice relaxation techniques like progressive muscle relaxation.",
-    "Reduce exposure to environmental toxins where possible.",
-    "Stay connected with friends and family to maintain emotional support.",
-    "Include a variety of proteins in your diet, such as fish, poultry, and legumes.",
-    "Use less salt in cooking and opt for herbs and spices for flavor.",
-    "Maintain a positive mindset to improve overall well-being.",
-    "Limit your intake of fast food and convenience foods.",
-    "Engage in activities that promote social interaction and connection.",
-    "Make sure to get adequate sun exposure for vitamin D.",
-    "Choose low-sugar options when possible.",
-    "Prioritize mental health by engaging in therapy or counseling if needed.",
-    "Find ways to manage your workload to reduce stress.",
-    "Take time to relax and unwind each day.",
-    "Choose high-fiber foods to support digestive health.",
-    "Avoid using food as a reward or comfort.",
-    "Incorporate strength training exercises to build muscle.",
-    "Seek out healthy alternatives to your favorite indulgent foods.",
-    "Maintain a healthy weight for your body type.",
-    "Practice safe food handling and preparation to avoid foodborne illnesses.",
-    "Set aside time for physical activity that you enjoy.",
-    "Keep a positive attitude towards your health and fitness journey.",
-    "Take care of your teeth and gums with regular brushing and flossing.",
-    "Celebrate your health achievements and milestones."
-];
+        ];
     
         let currentIndex = 0;
         let charIndex = 0;
@@ -249,24 +163,25 @@
             if (charIndex < tip.length) {
                 currentTipElement.textContent += tip.charAt(charIndex);
                 charIndex++;
-                setTimeout(typeTip, 100); 
+                setTimeout(typeTip, 100);
             } else {
-                setTimeout(showNextTip, 12000); 
+                setTimeout(showNextTip, 8000);
             }
         }
     
         function showNextTip() {
             currentIndex = (currentIndex + 1) % tips.length;
             charIndex = 0;
-            document.getElementById('current-tip').textContent = ''; 
+            document.getElementById('current-tip').textContent = '';
             typeTip();
         }
     
-        
         typeTip();
     </script>
 </body>
 </html>
+
+
 
 
 
