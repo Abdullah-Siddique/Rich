@@ -1,5 +1,5 @@
 # checkup/views.py
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .forms import UserProfileForm
 
 def checkup(request):
@@ -21,6 +21,7 @@ def checkup(request):
         form = UserProfileForm()
 
     return render(request, 'checkup/checkup.html', {'form': form})
+
 
     
 
