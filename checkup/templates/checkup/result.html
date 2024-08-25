@@ -19,20 +19,13 @@
             overflow: hidden;
         }
         h1 {
-            font-size: 2.8em;
+            font-size: 3.5em;
             margin-bottom: 25px;
             color: #e91e63;
             position: relative;
             padding-left: 50px;
         }
-        h1::before {
-            content: '❤️';
-            font-size: 1.5em;
-            position: absolute;
-            left: 0;
-            top: 10px;
-            animation: bounce 2s infinite;
-        }
+        
         div.result-box {
             background-color: #60b6b92a;
             padding: 70px;
@@ -81,11 +74,11 @@
         .cure-sign::before {
             transform: rotate(90deg);
         }
-        p {
-            font-size: 1.6em;
+        h2 {
+            font-size: 3.1em;
             margin: 20px 0;
         }
-        p strong {
+        h2 strong {
             color: black;
             font-weight: bold;
             animation: slideIn 1s ease-out;
@@ -158,10 +151,10 @@
         <h1>Your Health Checkup Result</h1>
         <div class="flower rose" style="top: 50%; left: -60px; transform: translateY(-50%);"></div>
         <div class="flower flower-2" style="top: 50%; right: -60px; transform: translateY(-50%);"></div>
-        <p>Your BMI: <strong>{{ bmi }}</strong></p>
-        <p>Your BMR: <strong>{{ bmr }}</strong></p>
-        <p>Your Calorie Demand: <strong>{{ calorie_demand }}</strong></p>
-        <p>Health Status: <strong>{{ health_status }}</strong></p>
+        <h2>Your BMI: <strong>{{ bmi }}</strong></h2>
+        <h2>Your BMR: <strong>{{ bmr }}</strong></h2>
+        <h2>Your Calorie Demand: <strong>{{ calorie_demand }}</strong></h2>
+        <h2>Health Status: <strong>{{ health_status }}</strong></h2>
         <a href="{% url 'checkup' %}" class="button">Go Back (Test Again)</a>
         <div class="cure-sign" style="bottom: -30px; right: -30px;">+</div>
         <div class="cure-sign" style="bottom: -30px; left: -30px;">+</div>
